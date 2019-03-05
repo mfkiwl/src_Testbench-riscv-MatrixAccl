@@ -1,0 +1,24 @@
+=== Generated schedule for mkPool2 ===
+
+Method schedule
+---------------
+Method: send
+Ready signal: outQ.i_notFull
+Conflict-free: reduced
+Sequenced before (restricted): clean
+Conflicts: send
+ 
+Method: reduced
+Ready signal: outQ.i_notEmpty
+Conflict-free: send
+Sequenced before (restricted): clean
+Conflicts: reduced
+ 
+Method: clean
+Ready signal: True
+Sequenced before (restricted): clean
+Sequenced after (restricted): send, reduced
+ 
+Logical execution order: send, reduced, clean
+
+=======================================

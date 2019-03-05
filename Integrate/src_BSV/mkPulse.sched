@@ -1,0 +1,31 @@
+=== Generated schedule for mkPulse ===
+
+Method schedule
+---------------
+Method: send
+Ready signal: True
+Sequenced before (restricted): clean
+Sequenced after: isvalid
+Sequenced after (restricted): ishigh
+Conflicts: send
+ 
+Method: isvalid
+Ready signal: True
+Conflict-free: isvalid
+Sequenced before: send, ishigh, clean
+ 
+Method: ishigh
+Ready signal: port_0 || port_1
+Sequenced before (restricted): send, clean
+Sequenced after: isvalid
+Conflicts: ishigh
+ 
+Method: clean
+Ready signal: True
+Sequenced before (restricted): clean
+Sequenced after: isvalid
+Sequenced after (restricted): send, ishigh
+ 
+Logical execution order: isvalid, ishigh, send, clean
+
+=======================================

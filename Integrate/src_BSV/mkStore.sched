@@ -1,0 +1,198 @@
+=== Generated schedule for mkStore ===
+
+Method schedule
+---------------
+Method: enq
+Ready signal: memory_serverAdapterA_cnt .< 3'd3
+Conflict-free: deq
+Sequenced before: reset
+Sequenced before (restricted): clean
+Sequenced after (restricted): deqDDR
+Conflicts: enq, enqDDR
+ 
+Method: enqDDR
+Ready signal: memory_serverAdapterA_cnt .< 3'd3
+Conflict-free: deq
+Sequenced before: reset
+Sequenced before (restricted): clean
+Sequenced after (restricted): deqDDR
+Conflicts: enq, enqDDR
+ 
+Method: deq
+Ready signal: send.i_notEmpty
+Conflict-free: enq, enqDDR, deqDDR, reset
+Sequenced before (restricted): clean
+Conflicts: deq
+ 
+Method: deqDDR
+Ready signal: ddr.RDY_ishigh
+Conflict-free: deq
+Sequenced before (restricted): enq, enqDDR, clean, reset
+Conflicts: deqDDR
+ 
+Method: clean
+Ready signal: True
+Conflict-free: reset
+Sequenced before (restricted): clean
+Sequenced after (restricted): enq, enqDDR, deq, deqDDR
+ 
+Method: reset
+Ready signal: True
+Conflict-free: deq, clean
+Sequenced before (restricted): reset
+Sequenced after: enq, enqDDR
+Sequenced after (restricted): deqDDR
+ 
+Rule schedule
+-------------
+Rule: memory_serverAdapterA_outData_setFirstCore
+Predicate: memory_serverAdapterA_outDataCore.i_notEmpty &&
+	   memory_serverAdapterA_outDataCore.notEmpty
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterA_outData_setFirstEnq
+Predicate: (! memory_serverAdapterA_outDataCore.notEmpty) &&
+	   memory_serverAdapterA_outData_enqData.whas
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterA_outData_enqOnly
+Predicate: memory_serverAdapterA_outDataCore.i_notFull &&
+	   (! memory_serverAdapterA_outData_deqCalled.whas) &&
+	   memory_serverAdapterA_outData_enqData.whas
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterA_outData_deqOnly
+Predicate: memory_serverAdapterA_outDataCore.i_notEmpty &&
+	   memory_serverAdapterA_outData_deqCalled.whas &&
+	   (! memory_serverAdapterA_outData_enqData.whas)
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterA_outData_enqAndDeq
+Predicate: memory_serverAdapterA_outDataCore.i_notEmpty &&
+	   memory_serverAdapterA_outDataCore.i_notFull &&
+	   memory_serverAdapterA_outData_deqCalled.whas &&
+	   memory_serverAdapterA_outData_enqData.whas
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterA_cnt_finalAdd
+Predicate: memory_serverAdapterA_cnt_1.whas ||
+	   memory_serverAdapterA_cnt_2.whas ||
+	   memory_serverAdapterA_cnt_3.whas
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterA_s1__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterA_stageReadResponseAlways
+Predicate: memory_serverAdapterA_writeWithResp.whas
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterA_moveToOutFIFO
+Predicate: memory_serverAdapterA_outDataCore.notFull &&
+	   memory_serverAdapterA_s1[1]
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterA_overRun
+Predicate: memory_serverAdapterA_s1[1] &&
+	   (! memory_serverAdapterA_outDataCore.notFull)
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterB_outData_setFirstCore
+Predicate: memory_serverAdapterB_outDataCore.i_notEmpty &&
+	   memory_serverAdapterB_outDataCore.notEmpty
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterB_outData_setFirstEnq
+Predicate: (! memory_serverAdapterB_outDataCore.notEmpty) &&
+	   memory_serverAdapterB_outData_enqData.whas
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterB_outData_enqOnly
+Predicate: memory_serverAdapterB_outDataCore.i_notFull &&
+	   (! memory_serverAdapterB_outData_deqCalled.whas) &&
+	   memory_serverAdapterB_outData_enqData.whas
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterB_outData_deqOnly
+Predicate: memory_serverAdapterB_outDataCore.i_notEmpty &&
+	   memory_serverAdapterB_outData_deqCalled.whas &&
+	   (! memory_serverAdapterB_outData_enqData.whas)
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterB_outData_enqAndDeq
+Predicate: memory_serverAdapterB_outDataCore.i_notEmpty &&
+	   memory_serverAdapterB_outDataCore.i_notFull &&
+	   memory_serverAdapterB_outData_deqCalled.whas &&
+	   memory_serverAdapterB_outData_enqData.whas
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterB_cnt_finalAdd
+Predicate: memory_serverAdapterB_cnt_1.whas ||
+	   memory_serverAdapterB_cnt_2.whas ||
+	   memory_serverAdapterB_cnt_3.whas
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterB_s1__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterB_stageReadResponseAlways
+Predicate: memory_serverAdapterB_writeWithResp.whas
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterB_moveToOutFIFO
+Predicate: memory_serverAdapterB_outDataCore.notFull &&
+	   memory_serverAdapterB_s1[1]
+Blocking rules: (none)
+ 
+Rule: memory_serverAdapterB_overRun
+Predicate: memory_serverAdapterB_s1[1] &&
+	   (! memory_serverAdapterB_outDataCore.notFull)
+Blocking rules: (none)
+ 
+Rule: _CLK
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: deqRequester
+Predicate: (memory_serverAdapterB_cnt .< 3'd3) && (! (rear == front))
+Blocking rules: (none)
+ 
+Rule: fillcache
+Predicate: (memory_serverAdapterB_outDataCore.notEmpty ||
+	    memory_serverAdapterB_outData_enqData.whas) &&
+	   memory_serverAdapterB_outData_outData.whas && send.i_notFull
+Blocking rules: (none)
+ 
+Logical execution order: deq,
+			 deqDDR,
+			 _CLK,
+			 memory_serverAdapterA_moveToOutFIFO,
+			 memory_serverAdapterA_overRun,
+			 memory_serverAdapterA_outData_setFirstCore,
+			 memory_serverAdapterA_outData_setFirstEnq,
+			 memory_serverAdapterA_outData_enqOnly,
+			 memory_serverAdapterA_outData_deqOnly,
+			 memory_serverAdapterA_outData_enqAndDeq,
+			 memory_serverAdapterB_moveToOutFIFO,
+			 memory_serverAdapterB_overRun,
+			 memory_serverAdapterB_outData_setFirstCore,
+			 memory_serverAdapterB_outData_setFirstEnq,
+			 fillcache,
+			 deqRequester,
+			 enq,
+			 enqDDR,
+			 clean,
+			 reset,
+			 memory_serverAdapterA_stageReadResponseAlways,
+			 memory_serverAdapterA_cnt_finalAdd,
+			 memory_serverAdapterA_s1__dreg_update,
+			 memory_serverAdapterB_stageReadResponseAlways,
+			 memory_serverAdapterB_outData_enqOnly,
+			 memory_serverAdapterB_outData_deqOnly,
+			 memory_serverAdapterB_outData_enqAndDeq,
+			 memory_serverAdapterB_cnt_finalAdd,
+			 memory_serverAdapterB_s1__dreg_update
+
+=======================================

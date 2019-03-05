@@ -1,0 +1,87 @@
+=== Generated schedule for mkTreeSum ===
+
+Method schedule
+---------------
+Method: put
+Ready signal: _unnamed__7.notFull && _unnamed__5.i_notFull
+Conflict-free: result, cleaned
+Sequenced before (restricted): clean
+Conflicts: put
+ 
+Method: result
+Ready signal: _unnamed__9.i_notEmpty
+Conflict-free: put, cleaned
+Sequenced before (restricted): clean
+Conflicts: result
+ 
+Method: clean
+Ready signal: True
+Conflict-free: cleaned
+Sequenced before (restricted): clean
+Sequenced after (restricted): put, result
+ 
+Method: cleaned
+Ready signal: True
+Conflict-free: put, result, clean, cleaned
+ 
+Rule schedule
+-------------
+Rule: _CLK
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: level
+Predicate: _unnamed__5.i_notEmpty && _unnamed__6.i_notFull &&
+	   (! _unnamed_[7]) && (! _unnamed__3)
+Blocking rules: (none)
+ 
+Rule: level_1
+Predicate: _unnamed__6.i_notEmpty && _unnamed__7.i_notFull &&
+	   (! (_unnamed_ .< 8'd1)) && (! _unnamed__3)
+Blocking rules: (none)
+ 
+Rule: level_2
+Predicate: _unnamed__7.i_notEmpty && _unnamed__8.i_notFull &&
+	   (! (_unnamed_ .< 8'd2)) && (! _unnamed__3)
+Blocking rules: (none)
+ 
+Rule: level_3
+Predicate: _unnamed__8.i_notEmpty && _unnamed__9.i_notFull &&
+	   (! (_unnamed_ .< 8'd3)) && (! _unnamed__3)
+Blocking rules: (none)
+ 
+Rule: level_4
+Predicate: _unnamed__9.i_notEmpty && _unnamed__10.i_notFull &&
+	   (! (_unnamed_ .< 8'd4)) && (! _unnamed__3)
+Blocking rules: result
+ 
+Rule: level_5
+Predicate: _unnamed__10.i_notEmpty && _unnamed__11.i_notFull &&
+	   (! (_unnamed_ .< 8'd5)) && (! _unnamed__3)
+Blocking rules: (none)
+ 
+Rule: level_6
+Predicate: _unnamed__11.i_notEmpty && _unnamed__12.i_notFull &&
+	   (! (_unnamed_ .< 8'd6)) && (! _unnamed__3)
+Blocking rules: (none)
+ 
+Rule: level_7
+Predicate: _unnamed__12.i_notEmpty && _unnamed__13.i_notFull &&
+	   (! (_unnamed_ .< 8'd7)) && (! _unnamed__3)
+Blocking rules: (none)
+ 
+Logical execution order: put,
+			 result,
+			 cleaned,
+			 _CLK,
+			 level,
+			 level_1,
+			 level_2,
+			 level_3,
+			 level_4,
+			 level_5,
+			 level_6,
+			 level_7,
+			 clean
+
+=========================================

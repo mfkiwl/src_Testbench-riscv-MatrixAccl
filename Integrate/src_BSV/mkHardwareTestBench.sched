@@ -1,0 +1,33 @@
+=== Generated schedule for mkHardwareTestBench ===
+
+Rule schedule
+-------------
+Rule: init_rule
+Predicate: init
+Blocking rules: (none)
+ 
+Rule: update_clock
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: layerIn
+Predicate: cnnR.RDY_put && (! (clk .< 32'd1))
+Blocking rules: (none)
+ 
+Rule: layerOut
+Predicate: cnnR.RDY_get &&
+	   ((clk[31]
+	     ? - ((clk[31]
+		   ? - clk
+		   : clk) %
+		  32'd10)
+	     : ((clk[31]
+		 ? - clk
+		 : clk) %
+		32'd10)) ==
+	    32'd0)
+Blocking rules: (none)
+ 
+Logical execution order: init_rule, layerIn, layerOut, update_clock
+
+===================================================

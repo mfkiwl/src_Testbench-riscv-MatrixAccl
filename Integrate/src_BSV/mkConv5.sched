@@ -1,0 +1,369 @@
+=== Generated schedule for mkConv5 ===
+
+Method schedule
+---------------
+Method: sendP
+Ready signal: _unnamed__1.notFull && _unnamed_.i_notFull
+Conflict-free: sendF, clean
+Sequenced before: result
+Conflicts: sendP
+ 
+Method: sendF
+Ready signal: True
+Conflict-free: sendP, result, clean
+Sequenced before (restricted): sendF
+ 
+Method: result
+Ready signal: _unnamed__1.i_notEmpty
+Conflict-free: sendF, clean
+Sequenced after: sendP
+Conflicts: result
+ 
+Method: clean
+Ready signal: True
+Conflict-free: sendP, sendF, result
+Conflicts: clean
+ 
+Rule schedule
+-------------
+Rule: _clk
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: _input_decompose
+Predicate: _unnamed_.i_notEmpty
+Blocking rules: (none)
+ 
+Rule: _pushMAC
+Predicate: _unnamed__2.RDY_b &&
+	   _unnamed__2.RDY_a && wc_0.whas && window_0.whas &&
+	   wc_0.wget
+Blocking rules: (none)
+ 
+Rule: _ac1
+Predicate: _unnamed__2.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_1
+Predicate: _unnamed__3.RDY_b &&
+	   _unnamed__3.RDY_a && wc_1.whas && window_1.whas &&
+	   wc_1.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_1
+Predicate: _unnamed__3.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_2
+Predicate: _unnamed__4.RDY_b &&
+	   _unnamed__4.RDY_a && wc_2.whas && window_2.whas &&
+	   wc_2.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_2
+Predicate: _unnamed__4.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_3
+Predicate: _unnamed__5.RDY_b &&
+	   _unnamed__5.RDY_a && wc_3.whas && window_3.whas &&
+	   wc_3.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_3
+Predicate: _unnamed__5.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_4
+Predicate: _unnamed__6.RDY_b &&
+	   _unnamed__6.RDY_a && wc_4.whas && window_4.whas &&
+	   wc_4.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_4
+Predicate: _unnamed__6.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_5
+Predicate: _unnamed__7.RDY_b &&
+	   _unnamed__7.RDY_a && wc_5.whas && window_5.whas &&
+	   wc_5.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_5
+Predicate: _unnamed__7.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_6
+Predicate: _unnamed__8.RDY_b &&
+	   _unnamed__8.RDY_a && wc_6.whas && window_6.whas &&
+	   wc_6.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_6
+Predicate: _unnamed__8.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_7
+Predicate: _unnamed__9.RDY_b &&
+	   _unnamed__9.RDY_a && wc_7.whas && window_7.whas &&
+	   wc_7.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_7
+Predicate: _unnamed__9.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_8
+Predicate: _unnamed__10.RDY_b &&
+	   _unnamed__10.RDY_a && wc_8.whas && window_8.whas &&
+	   wc_8.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_8
+Predicate: _unnamed__10.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_9
+Predicate: _unnamed__11.RDY_b &&
+	   _unnamed__11.RDY_a && wc_9.whas && window_9.whas &&
+	   wc_9.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_9
+Predicate: _unnamed__11.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_10
+Predicate: _unnamed__12.RDY_b &&
+	   _unnamed__12.RDY_a && wc_10.whas && window_10.whas &&
+	   wc_10.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_10
+Predicate: _unnamed__12.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_11
+Predicate: _unnamed__13.RDY_b &&
+	   _unnamed__13.RDY_a && wc_11.whas && window_11.whas &&
+	   wc_11.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_11
+Predicate: _unnamed__13.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_12
+Predicate: _unnamed__14.RDY_b &&
+	   _unnamed__14.RDY_a && wc_12.whas && window_12.whas &&
+	   wc_12.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_12
+Predicate: _unnamed__14.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_13
+Predicate: _unnamed__15.RDY_b &&
+	   _unnamed__15.RDY_a && wc_13.whas && window_13.whas &&
+	   wc_13.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_13
+Predicate: _unnamed__15.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_14
+Predicate: _unnamed__16.RDY_b &&
+	   _unnamed__16.RDY_a && wc_14.whas && window_14.whas &&
+	   wc_14.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_14
+Predicate: _unnamed__16.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_15
+Predicate: _unnamed__17.RDY_b &&
+	   _unnamed__17.RDY_a && wc_15.whas && window_15.whas &&
+	   wc_15.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_15
+Predicate: _unnamed__17.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_16
+Predicate: _unnamed__18.RDY_b &&
+	   _unnamed__18.RDY_a && wc_16.whas && window_16.whas &&
+	   wc_16.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_16
+Predicate: _unnamed__18.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_17
+Predicate: _unnamed__19.RDY_b &&
+	   _unnamed__19.RDY_a && wc_17.whas && window_17.whas &&
+	   wc_17.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_17
+Predicate: _unnamed__19.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_18
+Predicate: _unnamed__20.RDY_b &&
+	   _unnamed__20.RDY_a && wc_18.whas && window_18.whas &&
+	   wc_18.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_18
+Predicate: _unnamed__20.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_19
+Predicate: _unnamed__21.RDY_b &&
+	   _unnamed__21.RDY_a && wc_19.whas && window_19.whas &&
+	   wc_19.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_19
+Predicate: _unnamed__21.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_20
+Predicate: _unnamed__22.RDY_b &&
+	   _unnamed__22.RDY_a && wc_20.whas && window_20.whas &&
+	   wc_20.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_20
+Predicate: _unnamed__22.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_21
+Predicate: _unnamed__23.RDY_b &&
+	   _unnamed__23.RDY_a && wc_21.whas && window_21.whas &&
+	   wc_21.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_21
+Predicate: _unnamed__23.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_22
+Predicate: _unnamed__24.RDY_b &&
+	   _unnamed__24.RDY_a && wc_22.whas && window_22.whas &&
+	   wc_22.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_22
+Predicate: _unnamed__24.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_23
+Predicate: _unnamed__25.RDY_b &&
+	   _unnamed__25.RDY_a && wc_23.whas && window_23.whas &&
+	   wc_23.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_23
+Predicate: _unnamed__25.RDY_out
+Blocking rules: (none)
+ 
+Rule: _pushMAC_24
+Predicate: _unnamed__26.RDY_b &&
+	   _unnamed__26.RDY_a && wc_24.whas && window_24.whas &&
+	   wc_24.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_24
+Predicate: _unnamed__26.RDY_out
+Blocking rules: (none)
+ 
+Rule: _ac2
+Predicate: a0.RDY_ishigh
+Blocking rules: (none)
+ 
+Rule: _ac3
+Predicate: a1.RDY_ishigh
+Blocking rules: (none)
+ 
+Rule: _ac4
+Predicate: a2.RDY_ishigh
+Blocking rules: (none)
+ 
+Rule: _ac5
+Predicate: a3.RDY_ishigh && _unnamed__1.i_notFull
+Blocking rules: (none)
+ 
+Rule: _clean
+Predicate: cl.whas && cl.wget
+Blocking rules: (none)
+ 
+Logical execution order: sendP,
+			 result,
+			 clean,
+			 _clk,
+			 _input_decompose,
+			 _pushMAC,
+			 _pushMAC_1,
+			 _pushMAC_2,
+			 _pushMAC_3,
+			 _pushMAC_4,
+			 _pushMAC_5,
+			 _pushMAC_6,
+			 _pushMAC_7,
+			 _pushMAC_8,
+			 _pushMAC_9,
+			 _pushMAC_10,
+			 _pushMAC_11,
+			 _pushMAC_12,
+			 _pushMAC_13,
+			 _pushMAC_14,
+			 _pushMAC_15,
+			 _pushMAC_16,
+			 _pushMAC_17,
+			 _pushMAC_18,
+			 _pushMAC_19,
+			 _pushMAC_20,
+			 _pushMAC_21,
+			 _pushMAC_22,
+			 _pushMAC_23,
+			 _pushMAC_24,
+			 sendF,
+			 _ac5,
+			 _ac4,
+			 _ac3,
+			 _ac2,
+			 _ac1,
+			 _ac1_1,
+			 _ac1_2,
+			 _ac1_3,
+			 _ac1_4,
+			 _ac1_5,
+			 _ac1_6,
+			 _ac1_7,
+			 _ac1_8,
+			 _ac1_9,
+			 _ac1_10,
+			 _ac1_11,
+			 _ac1_12,
+			 _ac1_13,
+			 _ac1_14,
+			 _ac1_15,
+			 _ac1_16,
+			 _ac1_17,
+			 _ac1_18,
+			 _ac1_19,
+			 _ac1_20,
+			 _ac1_21,
+			 _ac1_22,
+			 _ac1_23,
+			 _ac1_24,
+			 _clean
+
+=======================================

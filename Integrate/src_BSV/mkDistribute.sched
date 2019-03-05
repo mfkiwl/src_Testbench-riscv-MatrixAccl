@@ -1,0 +1,30 @@
+=== Generated schedule for mkDistribute ===
+
+Method schedule
+---------------
+Method: put
+Ready signal: out.notFull && out.i_notFull
+Sequenced before: result
+Sequenced before (restricted): clean
+Conflicts: put, put2
+ 
+Method: put2
+Ready signal: out.notFull && out.i_notFull
+Sequenced before: result
+Sequenced before (restricted): clean
+Conflicts: put, put2
+ 
+Method: result
+Ready signal: out.i_notEmpty
+Sequenced before (restricted): clean
+Sequenced after: put, put2
+Conflicts: result
+ 
+Method: clean
+Ready signal: True
+Sequenced before (restricted): clean
+Sequenced after (restricted): put, put2, result
+ 
+Logical execution order: put, put2, result, clean
+
+============================================

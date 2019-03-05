@@ -1,0 +1,204 @@
+=== Generated schedule for mkHardware ===
+
+Method schedule
+---------------
+Method: get
+Ready signal: (send < 22'd197) && outQ_0_0.i_notEmpty
+Sequenced after (restricted): put
+Conflicts: get
+ 
+Method: put
+Ready signal: outQ_0_0.notFull && (recv < 22'd256) && instream_0.i_notFull
+Sequenced before (restricted): get
+Conflicts: put
+ 
+Rule schedule
+-------------
+Rule: _pop
+Predicate: instream_0.i_notEmpty && outstream_0_0.i_notFull
+Blocking rules: (none)
+ 
+Rule: line__CLK
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: line__DRAMFetch
+Predicate: line_instream_0.i_notEmpty &&
+	   line_inputFmap_0.RDY_enq &&
+	   line_inputFmap_1.RDY_enq && line_inputFmap_2.RDY_enq &&
+	   (! line_1)
+Blocking rules: (none)
+ 
+Rule: line__BRAMfetch
+Predicate: line_2.RDY_ishigh &&
+	   line_4.RDY_ishigh &&
+	   line_inputFmap_0.RDY_deq &&
+	   line_inputFmap_1.RDY_deq &&
+	   line_inputFmap_2.RDY_deq &&
+	   line_7.i_notFull && line_8.i_notFull && line_9.i_notFull &&
+	   (! line_1)
+Blocking rules: (none)
+ 
+Rule: line__latchData
+Predicate: line_inputFmap_0.RDY_latchData &&
+	   (! line_1) && (line_c0_0 ^ line_p0)
+Blocking rules: (none)
+ 
+Rule: line__storeData
+Predicate: line_l_0.RDY_ishigh
+Blocking rules: (none)
+ 
+Rule: line__getData
+Predicate: line_l1_0.RDY_ishigh && line_7.i_notEmpty && line_data_0.i_notFull
+Blocking rules: (none)
+ 
+Rule: line__latchData_1
+Predicate: line_inputFmap_1.RDY_latchData &&
+	   (! line_1) && (line_c0_1 ^ line_p0)
+Blocking rules: (none)
+ 
+Rule: line__storeData_1
+Predicate: line_l_1.RDY_ishigh
+Blocking rules: (none)
+ 
+Rule: line__getData_1
+Predicate: line_l1_1.RDY_ishigh && line_8.i_notEmpty && line_data_1.i_notFull
+Blocking rules: (none)
+ 
+Rule: line__latchData_2
+Predicate: line_inputFmap_2.RDY_latchData &&
+	   (! line_1) && (line_c0_2 ^ line_p0)
+Blocking rules: (none)
+ 
+Rule: line__storeData_2
+Predicate: line_l_2.RDY_ishigh
+Blocking rules: (none)
+ 
+Rule: line__getData_2
+Predicate: line_l1_2.RDY_ishigh && line_9.i_notEmpty && line_data_2.i_notFull
+Blocking rules: (none)
+ 
+Rule: line_collect
+Predicate: line_data_0.i_notEmpty &&
+	   line_data_1.i_notEmpty && line_data_2.i_notEmpty &&
+	   (! line_1)
+Blocking rules: (none)
+ 
+Rule: line__HoldBuffer
+Predicate: line_5.RDY_ishigh && line_holder.i_notFull && (! line_1)
+Blocking rules: (none)
+ 
+Rule: line__reboot
+Predicate: line_1 && (! (line_6 == 4'd0))
+Blocking rules: (none)
+ 
+Rule: line__reboot_mem
+Predicate: line_inputFmap_0.RDY_clean &&
+	   line_inputFmap_1.RDY_clean && line_inputFmap_2.RDY_clean &&
+	   (line_6 == 4'd2) && line_1
+Blocking rules: (none)
+ 
+Rule: line_send
+Predicate: line_holder.i_notEmpty && line_outQ.i_notFull && (! line_1)
+Blocking rules: (none)
+ 
+Rule: _CLK
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: _input
+Predicate: outstream_0_0.i_notEmpty &&
+	   line_outQ.notFull && line_instream_0.i_notFull
+Blocking rules: (none)
+ 
+Rule: get
+Predicate: (! line_1) &&
+	   line_outQ.i_notEmpty &&
+	   _unnamed__7.i_notFull &&
+	   _unnamed__8.i_notFull &&
+	   _unnamed__9.i_notFull &&
+	   _unnamed__10.i_notFull &&
+	   _unnamed__11.i_notFull &&
+	   _unnamed__12.i_notFull &&
+	   _unnamed__13.i_notFull &&
+	   _unnamed__14.i_notFull && _unnamed__15.i_notFull
+Blocking rules: (none)
+ 
+Rule: _CLK_1
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: inputx
+Predicate: _unnamed__16.RDY_sendP &&
+	   _unnamed__7.i_notEmpty &&
+	   _unnamed__8.i_notEmpty &&
+	   _unnamed__9.i_notEmpty &&
+	   _unnamed__10.i_notEmpty &&
+	   _unnamed__11.i_notEmpty &&
+	   _unnamed__12.i_notEmpty &&
+	   _unnamed__13.i_notEmpty &&
+	   _unnamed__14.i_notEmpty && _unnamed__15.i_notEmpty
+Blocking rules: (none)
+ 
+Rule: _output
+Predicate: _unnamed__16.RDY_result && out_0_0.i_notFull
+Blocking rules: (none)
+ 
+Rule: initialize
+Predicate: init
+Blocking rules: (none)
+ 
+Rule: _pad
+Predicate: instream_0.i_notFull && (! (recv < 22'd256)) && (send < 22'd197)
+Blocking rules: (none)
+ 
+Rule: flushOut
+Predicate: out_0_0.i_notEmpty && outQ_0_0.i_notFull && (send < 22'd197)
+Blocking rules: (none)
+ 
+Rule: _ClearPipe
+Predicate: (send == 22'd197) && (! _unnamed_)
+Blocking rules: (none)
+ 
+Rule: _ResetDone
+Predicate: (line_6 == 4'd0) && _unnamed_ && (! _unnamed__1)
+Blocking rules: (none)
+ 
+Rule: _ResetDone2
+Predicate: _unnamed_ && _unnamed__1
+Blocking rules: (none)
+ 
+Logical execution order: put,
+			 _pop,
+			 _CLK,
+			 _input,
+			 get,
+			 _CLK_1,
+			 inputx,
+			 _output,
+			 initialize,
+			 _pad,
+			 flushOut,
+			 get,
+			 _ResetDone2,
+			 line__CLK,
+			 line__getData,
+			 line__getData_1,
+			 line__getData_2,
+			 line__storeData,
+			 line__latchData,
+			 line__storeData_1,
+			 line__latchData_1,
+			 line__storeData_2,
+			 line__latchData_2,
+			 line__BRAMfetch,
+			 line__DRAMFetch,
+			 line__HoldBuffer,
+			 line_collect,
+			 line__reboot_mem,
+			 line__reboot,
+			 line_send,
+			 _ClearPipe,
+			 _ResetDone
+
+==========================================

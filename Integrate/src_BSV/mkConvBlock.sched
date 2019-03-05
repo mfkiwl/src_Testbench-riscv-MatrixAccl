@@ -1,0 +1,96 @@
+=== Generated schedule for mkConvBlock ===
+
+Method schedule
+---------------
+Method: sendP
+Ready signal: px.RDY_put
+Conflict-free: sendF, result, cleaned
+Sequenced before (restricted): reset
+Conflicts: sendP
+ 
+Method: sendF
+Ready signal: fx.RDY_put2
+Conflict-free: sendP, result, cleaned
+Sequenced before (restricted): reset
+Conflicts: sendF
+ 
+Method: result
+Ready signal: tx.RDY_result
+Conflict-free: sendP, sendF, cleaned
+Sequenced before (restricted): reset
+Conflicts: result
+ 
+Method: reset
+Ready signal: True
+Conflict-free: cleaned
+Sequenced before (restricted): reset
+Sequenced after (restricted): sendP, sendF, result
+ 
+Method: cleaned
+Ready signal: True
+Conflict-free: sendP, sendF, result, reset, cleaned
+ 
+Rule schedule
+-------------
+Rule: _CLK
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: _pushMAC
+Predicate: _unnamed_.RDY_b &&
+	   _unnamed__1.RDY_b &&
+	   _unnamed__2.RDY_b &&
+	   _unnamed__3.RDY_b &&
+	   _unnamed__4.RDY_b &&
+	   _unnamed__5.RDY_b &&
+	   _unnamed__6.RDY_b &&
+	   _unnamed__7.RDY_b &&
+	   _unnamed__8.RDY_b &&
+	   _unnamed__9.RDY_b &&
+	   _unnamed__10.RDY_b &&
+	   _unnamed__11.RDY_b &&
+	   _unnamed__12.RDY_b &&
+	   _unnamed__13.RDY_b &&
+	   _unnamed__14.RDY_b &&
+	   _unnamed__15.RDY_b &&
+	   _unnamed__16.RDY_b &&
+	   _unnamed__17.RDY_b &&
+	   _unnamed__18.RDY_b &&
+	   _unnamed__19_RDY_b____d22(...) &&
+	   unnamed__20_RDY_b__3_AND_unnamed__21_RDY_b__4__ETC___d1009(...)
+Blocking rules: (none)
+ 
+Rule: _SUM
+Predicate: _unnamed_.RDY_out &&
+	   _unnamed__1.RDY_out &&
+	   _unnamed__2.RDY_out &&
+	   _unnamed__3.RDY_out &&
+	   _unnamed__4.RDY_out &&
+	   _unnamed__5.RDY_out &&
+	   _unnamed__6.RDY_out &&
+	   _unnamed__7.RDY_out &&
+	   _unnamed__8.RDY_out &&
+	   _unnamed__9.RDY_out &&
+	   _unnamed__10.RDY_out &&
+	   _unnamed__11.RDY_out &&
+	   _unnamed__12.RDY_out &&
+	   _unnamed__13.RDY_out &&
+	   _unnamed__14.RDY_out &&
+	   _unnamed__15.RDY_out &&
+	   _unnamed__16.RDY_out &&
+	   _unnamed__17.RDY_out &&
+	   _unnamed__18.RDY_out &&
+	   _unnamed__19_RDY_out____d1563(...) &&
+	   unnamed__20_RDY_out__564_AND_unnamed__21_RDY_o_ETC___d2036(...)
+Blocking rules: (none)
+ 
+Logical execution order: sendP,
+			 sendF,
+			 result,
+			 cleaned,
+			 _pushMAC,
+			 _SUM,
+			 reset,
+			 _CLK
+
+===========================================

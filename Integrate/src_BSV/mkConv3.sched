@@ -1,0 +1,179 @@
+=== Generated schedule for mkConv3 ===
+
+Method schedule
+---------------
+Method: sendP
+Ready signal: _unnamed__1.notFull && _unnamed_.i_notFull
+Conflict-free: sendF, clean
+Sequenced before: result
+Conflicts: sendP
+ 
+Method: sendF
+Ready signal: True
+Conflict-free: sendP, result, clean
+Sequenced before (restricted): sendF
+ 
+Method: result
+Ready signal: _unnamed__1.i_notEmpty
+Conflict-free: sendF, clean
+Sequenced after: sendP
+Conflicts: result
+ 
+Method: clean
+Ready signal: True
+Conflict-free: sendP, sendF, result
+Conflicts: clean
+ 
+Rule schedule
+-------------
+Rule: _clk
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: _input_decompose
+Predicate: _unnamed_.i_notEmpty
+Blocking rules: (none)
+ 
+Rule: _pushMAC
+Predicate: _unnamed__3.RDY_b &&
+	   _unnamed__3.RDY_a && wc_0.whas && window_0.whas &&
+	   wc_0.wget
+Blocking rules: (none)
+ 
+Rule: _ac1
+Predicate: _unnamed__3.RDY_out && accumulator1_0.i_notFull
+Blocking rules: (none)
+ 
+Rule: _pushMAC_1
+Predicate: _unnamed__4.RDY_b &&
+	   _unnamed__4.RDY_a && wc_1.whas && window_1.whas &&
+	   wc_1.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_1
+Predicate: _unnamed__4.RDY_out && accumulator1_1.i_notFull
+Blocking rules: (none)
+ 
+Rule: _pushMAC_2
+Predicate: _unnamed__5.RDY_b &&
+	   _unnamed__5.RDY_a && wc_2.whas && window_2.whas &&
+	   wc_2.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_2
+Predicate: _unnamed__5.RDY_out && accumulator1_2.i_notFull
+Blocking rules: (none)
+ 
+Rule: _pushMAC_3
+Predicate: _unnamed__6.RDY_b &&
+	   _unnamed__6.RDY_a && wc_3.whas && window_3.whas &&
+	   wc_3.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_3
+Predicate: _unnamed__6.RDY_out && accumulator1_3.i_notFull
+Blocking rules: (none)
+ 
+Rule: _pushMAC_4
+Predicate: _unnamed__7.RDY_b &&
+	   _unnamed__7.RDY_a && wc_4.whas && window_4.whas &&
+	   wc_4.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_4
+Predicate: _unnamed__7.RDY_out && accumulator1_4.i_notFull
+Blocking rules: (none)
+ 
+Rule: _pushMAC_5
+Predicate: _unnamed__8.RDY_b &&
+	   _unnamed__8.RDY_a && wc_5.whas && window_5.whas &&
+	   wc_5.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_5
+Predicate: _unnamed__8.RDY_out && accumulator1_5.i_notFull
+Blocking rules: (none)
+ 
+Rule: _pushMAC_6
+Predicate: _unnamed__9.RDY_b &&
+	   _unnamed__9.RDY_a && wc_6.whas && window_6.whas &&
+	   wc_6.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_6
+Predicate: _unnamed__9.RDY_out && accumulator1_6.i_notFull
+Blocking rules: (none)
+ 
+Rule: _pushMAC_7
+Predicate: _unnamed__10.RDY_b &&
+	   _unnamed__10.RDY_a && wc_7.whas && window_7.whas &&
+	   wc_7.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_7
+Predicate: _unnamed__10.RDY_out && accumulator1_7.i_notFull
+Blocking rules: (none)
+ 
+Rule: _pushMAC_8
+Predicate: _unnamed__11.RDY_b &&
+	   _unnamed__11.RDY_a && wc_8.whas && window_8.whas &&
+	   wc_8.wget
+Blocking rules: (none)
+ 
+Rule: _ac1_8
+Predicate: _unnamed__11.RDY_out && accumulator1_8.i_notFull
+Blocking rules: (none)
+ 
+Rule: _ac2
+Predicate: accumulator1_0.i_notEmpty &&
+	   accumulator1_1.i_notEmpty &&
+	   accumulator1_2.i_notEmpty &&
+	   accumulator1_3.i_notEmpty &&
+	   accumulator1_4.i_notEmpty &&
+	   accumulator1_5.i_notEmpty &&
+	   accumulator1_6.i_notEmpty &&
+	   accumulator1_7.i_notEmpty &&
+	   accumulator1_8.i_notEmpty &&
+	   accumulator2_0.i_notFull &&
+	   accumulator2_1.i_notFull && accumulator2_2.i_notFull
+Blocking rules: (none)
+ 
+Rule: _ac3
+Predicate: accumulator2_0.i_notEmpty &&
+	   accumulator2_1.i_notEmpty &&
+	   accumulator2_2.i_notEmpty && _unnamed__1.i_notFull
+Blocking rules: (none)
+ 
+Rule: _clean
+Predicate: cl.whas && cl.wget
+Blocking rules: (none)
+ 
+Logical execution order: sendP,
+			 result,
+			 clean,
+			 _clk,
+			 _input_decompose,
+			 _pushMAC,
+			 _ac1,
+			 _pushMAC_1,
+			 _ac1_1,
+			 _pushMAC_2,
+			 _ac1_2,
+			 _pushMAC_3,
+			 _ac1_3,
+			 _pushMAC_4,
+			 _ac1_4,
+			 _pushMAC_5,
+			 _ac1_5,
+			 _pushMAC_6,
+			 _ac1_6,
+			 _pushMAC_7,
+			 _ac1_7,
+			 _pushMAC_8,
+			 sendF,
+			 _ac1_8,
+			 _ac2,
+			 _ac3,
+			 _clean
+
+=======================================

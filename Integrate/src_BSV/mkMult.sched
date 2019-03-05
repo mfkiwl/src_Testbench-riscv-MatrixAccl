@@ -1,0 +1,43 @@
+=== Generated schedule for mkMult ===
+
+Method schedule
+---------------
+Method: a
+Ready signal: outstream.notFull && _unnamed_.i_notFull
+Conflict-free: b
+Sequenced before: out
+Sequenced before (restricted): clean
+Conflicts: a
+ 
+Method: b
+Ready signal: outstream.notFull && _unnamed__1.i_notFull
+Conflict-free: a
+Sequenced before: out
+Sequenced before (restricted): clean
+Conflicts: b
+ 
+Method: clean
+Ready signal: True
+Sequenced before (restricted): clean
+Sequenced after (restricted): a, b, out
+ 
+Method: out
+Ready signal: outstream.i_notEmpty
+Sequenced before (restricted): clean
+Sequenced after: a, b
+Conflicts: out
+ 
+Rule schedule
+-------------
+Rule: _CLK
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: getInput
+Predicate: _unnamed_.i_notEmpty &&
+	   _unnamed__1.i_notEmpty && outstream.i_notFull
+Blocking rules: (none)
+ 
+Logical execution order: a, b, out, _CLK, getInput, clean
+
+======================================

@@ -1,0 +1,117 @@
+=== Generated schedule for mkBram ===
+
+Method schedule
+---------------
+Method: read
+Ready signal: True
+Conflict-free: latch, clean, get, write
+Conflicts: read
+ 
+Method: latch
+Ready signal: True
+Conflict-free: read, get, write
+Conflicts: latch, clean
+ 
+Method: clean
+Ready signal: True
+Conflict-free: read, get, write
+Conflicts: latch, clean
+ 
+Method: get
+Ready signal: True
+Conflict-free: read, latch, clean, get, write
+ 
+Method: write
+Ready signal: True
+Conflict-free: read, latch, clean, get
+Conflicts: write
+ 
+Rule schedule
+-------------
+Rule: _insert
+Predicate: addr_0.RDY_ishigh && slice_0.RDY_enq
+Blocking rules: (none)
+ 
+Rule: _insert_1
+Predicate: addr_1.RDY_ishigh && slice_1.RDY_enq
+Blocking rules: (none)
+ 
+Rule: _insert_2
+Predicate: addr_2.RDY_ishigh && slice_2.RDY_enq
+Blocking rules: (none)
+ 
+Rule: _insert_3
+Predicate: addr_3.RDY_ishigh && slice_3.RDY_enq
+Blocking rules: (none)
+ 
+Rule: _read
+Predicate: slice_0.RDY_deq && c0_0.whas && colr.whas && c0_0.wget
+Blocking rules: (none)
+ 
+Rule: _read_1
+Predicate: slice_1.RDY_deq && colr.whas && c0_1.whas && c0_1.wget
+Blocking rules: (none)
+ 
+Rule: _read_2
+Predicate: slice_2.RDY_deq && colr.whas && c0_2.whas && c0_2.wget
+Blocking rules: (none)
+ 
+Rule: _read_3
+Predicate: slice_3.RDY_deq && colr.whas && c0_3.whas && c0_3.wget
+Blocking rules: (none)
+ 
+Rule: _latch
+Predicate: slice_0.RDY_latchData && l.whas && l.wget
+Blocking rules: (none)
+ 
+Rule: _clean
+Predicate: slice_0.RDY_clean && l.whas && (! l.wget)
+Blocking rules: (none)
+ 
+Rule: _latch_1
+Predicate: slice_1.RDY_latchData && l.whas && l.wget
+Blocking rules: (none)
+ 
+Rule: _clean_1
+Predicate: slice_1.RDY_clean && l.whas && (! l.wget)
+Blocking rules: (none)
+ 
+Rule: _latch_2
+Predicate: slice_2.RDY_latchData && l.whas && l.wget
+Blocking rules: (none)
+ 
+Rule: _clean_2
+Predicate: slice_2.RDY_clean && l.whas && (! l.wget)
+Blocking rules: (none)
+ 
+Rule: _latch_3
+Predicate: slice_3.RDY_latchData && l.whas && l.wget
+Blocking rules: (none)
+ 
+Rule: _clean_3
+Predicate: slice_3.RDY_clean && l.whas && (! l.wget)
+Blocking rules: (none)
+ 
+Logical execution order: read,
+			 latch,
+			 clean,
+			 get,
+			 _insert,
+			 _insert_1,
+			 _insert_2,
+			 _insert_3,
+			 write,
+			 _read,
+			 _read_1,
+			 _read_2,
+			 _read_3,
+			 _latch,
+			 _clean,
+			 _latch_1,
+			 _clean_1,
+			 _latch_2,
+			 _clean_2,
+			 _latch_3,
+			 _clean_3
+
+======================================
